@@ -52,7 +52,7 @@ Throughout MA388 we will use the 2nd edition Jared Lander's textbook, **R For Ev
 
 ## Graded Events
 
-MA388 is a 10000-point course.  
+MA388 is a 1000-point course.  
 
 |Event|Points|
 |-----------|---|
