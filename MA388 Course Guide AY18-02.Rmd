@@ -88,13 +88,30 @@ MA388 is a 1000-point course.
 
 ## Reference Sheets
 
-#### **MA206 Reference Sheets
+The following reference sheets are available on the MA388 Course Guide.  All are authorized references for use during all course-wide assessments unless specifically noted.  You may access them digitally or in hard copy.  A clean hard copy will never count against any notes pages you may otherwise be authorized.
 
-The **MA206 Reference Sheet** available on the course page is an authorized reference for use during all course-wide assessments. You may access the <a href="https://lms.westpoint.edu/math/ma206/Shared%20Documents/MA206%20Reference%20Sheet.pdf" target="_blank">MA206 REFERENCE SHEET</a> digitally or in hard copy.  A clean hard copy will never count against any notes pages you may otherwise be authorized.
+<!-- <a href="https://lms.westpoint.edu/math/ma206/Shared%20Documents/MA206%20Reference%20Sheet.pdf" target="_blank">MA206 REFERENCE SHEET</a>  -->
+<!-- <a href="https://lms.westpoint.edu/math/ma206/Shared%20Documents/MA206%20Reference%20Sheet.pdf" target="_blank">Data Tranformation Reference Sheet</a>  -->
+<!-- <a href="https://lms.westpoint.edu/math/ma206/Shared%20Documents/MA206%20Reference%20Sheet.pdf" target="_blank">Data Visualization Reference Sheet</a>  -->
+
+
+
+#### **<a href="https://lms.westpoint.edu/math/ma388/Images1/MA206%20ReferenceSheet.pdf" target="_blank"> MA206 Reference Sheet</a> **
 
 <center>![](reference.jpg)</center>
 
-#### **Data Tranformation Reference Sheet**
+#### **<a href="https://lms.westpoint.edu/math/ma388/Images1/Data%20Transformation.pdf" target="_blank"> Data Tranformation Reference Sheet</a> **
+
+<center>![](datatransformationreference1.jpg)</center>
+<center>![](datatransformationreference2.jpg)</center>
+
+#### **<a href="https://lms.westpoint.edu/math/ma388/Images1/data-visualization-2.1.pdf" target="_blank"> Data Visualization Reference Sheet</a> **
+
+<center>![](datavisualizationreference1.jpg)</center>
+<center>![](datavisualizationreference2.jpg)</center>
+
+
+
 
 ## Course Calendar 
 <a href="https://lms.westpoint.edu/math/ma388/Images1/Calendar%20AY18-02.pdf" target="_blank">PDF Download of Course Calendar</a> 
