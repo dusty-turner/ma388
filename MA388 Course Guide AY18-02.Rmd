@@ -269,19 +269,17 @@ You can now use this information to answer the suggested problems.
 
 1. Join multiple data tables.
 
-2. Arrange data by specific column names.
-
-3. Subset data by...
+2. Subset data by...
   - random selection.
   - criteria of columns.
   - row position.
   - variable extraction.
   
-4. Save data to a csv file. 
+3. Save data to a csv file. 
   
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Lander Chapter 12 |  | Suggested Problems Below | 
+|Lander Chapter 12.1-12.5, 15 |  | Suggested Problems Below | 
 
 ### Suggested Problems
 
@@ -375,34 +373,123 @@ write.csv(playersselected, "players.csv")
 
 ## Lesson 5 - Data Aggregation 
 
-1. Objective 1
+1. Know when data aggregation is necessary to support analysis.     
 
-2. Objective 2
+2. Arrange data by specific column names.
+
+3. Group columns on particular traits in preparation for aggregation. 
+
+4. Apply the following (non exhaustive list of) aggregation techniques across grouped variables:
+  - sum() / count()
+  - mean() / median() / sd() / var()
+  - min() / max() / quantile()
+  - others from Data Transformation Cheat Sheet
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Lander Chapter 12.7-12.9 |  | Suggested Problems Below | 
+
+### Suggested Problems
+
+1. Read in data from last lesson: `players.csv`
+
+2. What is the average at bats per season?
+
+3. Group by year.  What is the average at bats per year?
+
+4. Group by player and year.  Which player had the most at bats in a year?  Which year was it?
+
+5. Group by year.  Arrange the data from most to least by stolen bases.  Who stole the most bases?  How many times was that player caught stealing?  
+
+### R Help
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+library(tidyverse)
+
+# 1. Read in data from last lesson: `players.csv`
+players = read_csv("players.csv")
+
+# 2. What is the average at bats per season?
+players %>%
+  summarise(mean(AB))
+
+# 3. Group by year.  What is the average at bats per year?
+players %>%
+  group_by(yearID) %>%
+  summarise(mean(AB))
+
+# 4. Group by player and year.  Which player had the most at bats in a year?  Which year was it?
+players %>% 
+  group_by(yearID, playerID) %>%
+  arrange(desc(AB))
+
+# 5. Group by year.  Who stole the most bases?  How many times was that player caught stealing?  
+players %>%
+  group_by(yearID) %>%
+  arrange(desc(SBBatting))
+```
 
 
 ***
 ## Lesson 6 - Data Mutating 
 
-1. Objective 1
-
-2. Objective 2
-
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Lander Chapter 12.6 | | Suggested Problems Below | 
+
+1. Know when data mutation is necessary to support analysis.     
+
+2. Apply the following (non exhaustive list of) mutation techniques across variables:
+  - sum() / count() 
+  - multiply or divide columns
+  - ifelse statements to create binary columns 
+  
+### Suggested Problems
+
+1. Read in data from last lesson: `players.csv`
+
+2. Filter out players who did not attempt a stolen base in a year.  
+
+3. Create a column that tracks attempted steals.  
+
+4. Grouping by year and player. With a minimum of 10 steals in a season, what 5 players have the highest success rate?
+ 
+### R Help 
+  
+```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+library(tidyverse)
+
+# 1. Read in data from last lesson: `players.csv`
+players = read_csv("players.csv")
+
+# 2. Filter out players who did not attempt a stolen base in a year.  
+
+players2 = players %>%
+  filter(!is.na(SBBatting)&!is.na(CSBatting))
+
+# 3. Create a column that tracks attempted steals.  
+
+players3 = players2 %>%
+  mutate(totalsteals = SBBatting + CSBatting)
+
+# 4. Grouping by year and player. With a minimum of 10 steals in a season, what 5 players have the highest success rate?
+
+players3 %>%
+  group_by(yearID, playerID) %>%
+  mutate(successrate = SBBatting/totalsteals) %>%
+  filter(totalsteals>=25) %>%
+  arrange(desc(successrate)) %>%
+  ungroup() %>%
+  top_n(5,successrate)
+  
+```
 
 
 ***
 
 ## Lesson 7 - History of Sabermetrics by Father Costa 
 
-1. Objective 1
-
-2. Objective 2
+1. Understand the history of Sabrmetrics.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
