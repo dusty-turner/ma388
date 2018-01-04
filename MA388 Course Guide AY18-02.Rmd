@@ -49,7 +49,7 @@ A/Course Director: **<a href="https://lms.westpoint.edu/math/dusty.turner/SitePa
 
 ## Course Textbook
 
-Throughout MA388 we will use the 2nd edition Jared Lander's textbook, **R For Everyone**.  
+Throughout MA388 we will use the 2nd edition of Jared Lander's textbook, **R For Everyone**.  
 
 ## Graded Events
 
@@ -68,7 +68,7 @@ MA388 is a 1000-point course.
 
 1.	Understand the notion of randomness and the role of variability and sampling in making inferences.
 
-2.  Develop proficiency with the open source statistical program R in order to create statistical models and comunicate results through visual tools.  
+2.  Develop proficiency with the open source statistical program R in order to create statistical models and communicate results through visual tools.  
 
 3. Attain, clean, join, and manipulate data in order to prepare it for statistical analysis. 
 
