@@ -264,6 +264,7 @@ texas = texas[-1,]
 You can now use this information to answer the suggested problems.  
 
 ***
+
 ## Lesson 4 - Data Cleaning
 
 1. Join multiple data tables.
@@ -282,21 +283,54 @@ You can now use this information to answer the suggested problems.
 |-------------------|-----------------|-----------|
 |Lander Chapter 12 |  | Suggested Problems Below | 
 
+### Suggested Problems
+
 1. Read in the `fielding`, `batting`, and `pitching` data from the course share point site.  
 
 2. 'Join' the the tables together using a full join.  Join the tables on columns such that you do not duplicate data.
 
-3. Randomly select 25% of the data.
+3. Select all rows which occured since 1975.
 
-4. Select all rows which occured since 1975.
+4. Rename Column headers so that they are easier to understand.
 
-5. Rename Column headers so that they are easier to understand.
+5. Filter the data by playerID, G, AB, R, H.
 
-5. Filter the data by playerID, G, AB, R, H
+6. What is the average hits per season per player since 1975?
 
 <center>![](dplyr-joins.png){ width=50% }</center>
 
-### R Help
+### R Help 1
+
+**The "PIPE" Tool**:  Using the `tidyverse` gives us the useful tool `%>%` - called the pipe.  A pipe allows us to 'pipe' arguments into functions is a very fluid way -- one that can simplify our coding.  Look at the function below:
+
+```{r echo=TRUE}
+myfunction = function(x,y){
+  z=x*y
+  return(z)
+}
+```
+
+To use this function, you place arguments in it like you have previously in MA206.  For example:
+
+```{r echo=TRUE}
+myfunction(3,4)
+```
+
+The `%>%` allows us to pipe in the first argement into our function.  See below:
+
+```{r echo=TRUE}
+3 %>% myfunction(4)
+```
+
+You can also string many functions together with the pipe.
+
+```{r echo=TRUE}
+3 %>% myfunction(4) %>% myfunction(10)
+```
+
+The above vignette is a simple application.  You will see next, an throughout the course, the many benefits of 'piping' in R.  
+
+### R Help 2
 
 Use `names(data)` to get a list of the names of your data.
 
@@ -314,6 +348,10 @@ fieldbatandpitch =
   fieldandbat %>%
   full_join(pitching, by = c("playerID", "yearID", "stint","teamID", "lgID"))
 
+fieldbatandpitch =
+  fieldbatandpitch %>%
+  filter(yearID >= 1975)
+
 players = 
   fieldbatandpitch %>% 
   rename(GamesBatting = G.x, GamesField = G.y, GamesStartedField = GS.x, GamesStartedPitching = GS.y, WPFielding = WP.x, 
@@ -323,16 +361,18 @@ players =
          IBBPitching = IBB.y, HBPBatting = HBP.x, HBPPitching = HBP.y, SHBatting = SH.x, SHPitching = SH.y,
          SFBatting = SF.x, SFPitching = SF.y, GIDPBatting = GIDP.x, GIDPPitching = GIDP.y, GPitching = G) 
 
-names(players)
-
-players = 
+playersselected = 
   players %>%
-  select(playerID, yearID, GamesBatting, GamesField, SBBatting, CSBatting)
+  select(playerID, yearID, AB, GamesBatting, GamesField, SBBatting, CSBatting)
 
+# mean(playersselected$AB)
+
+write.csv(playersselected, "players.csv")
 ```
 
 
 ***
+
 ## Lesson 5 - Data Aggregation 
 
 1. Objective 1
