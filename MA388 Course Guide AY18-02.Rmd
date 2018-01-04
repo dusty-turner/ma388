@@ -166,9 +166,21 @@ added once finalized
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Lander Chapter 3-6 |  | See Suggested Problems Below | 
+|Lander Chapter 3-6.2 |  | See Suggested Problems Below | 
 
-## R Help
+### Suggested Problems:
+
+1. Install `tidyverse`.
+
+2. Read in the `batting256.csv` file from the course sharepoint page.
+
+3. Summarise the data.  What data seems relevant for analysis. Irrelevant? How would you know?
+
+4. Create several plots that you might find interesting.
+
+5. Which player has played the most games? Registered the least hits?  What else do you find interesting?
+
+### R Help
 
 Helpful commands
 
@@ -183,41 +195,141 @@ Helpful commands
 # data[which.max(data$X1),]
 ```
 
-Suggested Problems:
-
-1. Install `tidyverse`.
-
-2. Read in the `batting256.csv` file from the course sharepoint page.
-
-3. Summarise the data.  What data seems relevant for analysis. Irrelevant? How would you know?
-
-4. Create several plots that you might find interesting.
-
-5. Which player has played the most games? Registered the least hits?  What else do you find interesting?
 
 ***
 
 ## Lesson 3 - Data Collection using RVest
 
-1. Objective 1
+1. Install packages and addons to aid data collection.
 
-2. Objective 2
+2. Understand ethical responsibilities of data scraping.
+
+3. Successfully 'scrape' data from the intrnet using R
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Lander Chapter 1-2 | Video | Problems | 
+|Lander Chapter 6.7-6.9 |  | Suggested Problems Below | 
+|<a href="https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/" target="_blank">Web Scraping How Too</a>|||
 
+
+### Suggested Problems
+
+1. Install the <a href="http://selectorgadget.com/" target="_blank">Selector Gadget</a> tool.  
+  - You must use Chrome
+  - Find the part of the page that says "Or drage this link to your bookmark bar."  Drag the link to the book mark bar.
+  - Test that it has installed properly by clicking on the bookmark.  You will know its a success when a box appears in the bottom right corner of your browser and your screen begins to highlight where your mouse rests. 
+  - Click on the data of interest on the website to select the proper CSS tag.  
+
+2. Install the `rvest` package using the `install.packages("rvest")` command.
+
+3. 'Scrape' the batting statistics from the <a href="https://www.baseball-reference.com/teams/TEX/2017.shtml" target="_blank">Texas Ranger's</a> page at Baseball Refrence.  
+
+4.  Create plot hits vs batting average.  Create other plots that help you visualize the data.
+
+5. Summarise the data.  Who lead the team in RBIs?  Hits?  Strikeouts? Of players who has at least 50 plate appearances, who had the highest batting average?  
+
+6. What issues did you run into during this process?  What was harder: Getting the data or getting the data in a usable format to analyse the data?
+
+### R Help
+
+Install / Load `rvest`
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# install.packages("rvest")  
+# library(rvest) 
+```
+
+Install / Load `rvest`
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# install.packages("rvest")  
+library(rvest)
+```
+
+Scrape Data
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# Store the URL as a variable
+url <- read_html("https://www.baseball-reference.com/teams/TEX/2017.shtml")
+
+#Scrape the website for information.  Use the CSS Selector tool to attain the proper CSS header.
+rangers <- url %>% 
+  html_nodes("#team_batting .center , #team_batting .left, #team_batting .right") %>%
+  html_text()
+
+texas = matrix(rangers, ncol = 28, byrow = TRUE)
+texas = as.data.frame(texas)
+texas = unique(texas)
+colnames(texas) = as.character(unlist(texas[1,]))
+texas = texas[-1,]
+```
+
+You can now use this information to answer the suggested problems.  
 
 ***
 ## Lesson 4 - Data Cleaning
 
-1. Objective 1
+1. Join multiple data tables.
 
-2. Objective 2
+2. Arrange data by specific column names.
 
+3. Subset data by...
+  - random selection.
+  - criteria of columns.
+  - row position.
+  - variable extraction.
+  
+4. Save data to a csv file. 
+  
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Lander Chapter 12 |  | Suggested Problems Below | 
+
+1. Read in the `fielding`, `batting`, and `pitching` data from the course share point site.  
+
+2. 'Join' the the tables together using a full join.  Join the tables on columns such that you do not duplicate data.
+
+3. Randomly select 25% of the data.
+
+4. Select all rows which occured since 1975.
+
+5. Rename Column headers so that they are easier to understand.
+
+5. Filter the data by playerID, G, AB, R, H
+
+<center>![](dplyr-joins.png){ width=50% }</center>
+
+### R Help
+
+Use `names(data)` to get a list of the names of your data.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+fielding = read_csv("Fielding.csv")
+batting = read_csv("Batting.csv")
+pitching = read_csv("Pitching.csv")
+
+fieldandbat = 
+  fielding %>%
+  full_join(batting, by = c("playerID", "yearID", "stint", "teamID", "lgID"))
+
+fieldbatandpitch = 
+  fieldandbat %>%
+  full_join(pitching, by = c("playerID", "yearID", "stint","teamID", "lgID"))
+
+players = 
+  fieldbatandpitch %>% 
+  rename(GamesBatting = G.x, GamesField = G.y, GamesStartedField = GS.x, GamesStartedPitching = GS.y, WPFielding = WP.x, 
+         SBBatting = SB.x, SBFielding = SB.y, CSBatting = CS.x, CSFielding = CS.y, RBatting = R.x,
+         RPitching = R.y, HBatting = H.x, HPitching = H.y, HRBatting = HR.x, HRPitching = HR.y, 
+         BBBatting = BB.x, BBPitching = BB.y, SOBatting = SO.x, SOPitching = SO.y, IBBBatting = IBB.x,
+         IBBPitching = IBB.y, HBPBatting = HBP.x, HBPPitching = HBP.y, SHBatting = SH.x, SHPitching = SH.y,
+         SFBatting = SF.x, SFPitching = SF.y, GIDPBatting = GIDP.x, GIDPPitching = GIDP.y, GPitching = G) 
+
+names(players)
+
+players = 
+  players %>%
+  select(playerID, yearID, GamesBatting, GamesField, SBBatting, CSBatting)
+
+```
 
 
 ***
