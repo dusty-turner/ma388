@@ -150,22 +150,53 @@ added once finalized
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Lander Chapter 1-2 |  |  | 
 
 ***
 
 ## Lesson 2 - Introduction to R and R Studio 
 
-1. Objective 1
+1. Install R and R Studio 
 
-2. Objective 2
+2. Download R Packages from the Comprehensive R Archive Network (CRAN)
+
+3. Read data into R from a CSV file.
+
+4. Understand Data Structures and basic R operations.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Lander Chapter 3-6 |  | See Suggested Problems Below | 
 
+## R Help
+
+Helpful commands
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+# install.packages("tidyverse")  Execute this line without the '#' to install the tidyverse
+# library(tidyverse) execute this line everytime you restart R to access this package
+# getwd() 
+# setwd(C:/Users/first.last/Desktop/.../)  Notice that the '\' are backwards '/'.  
+# batting = read_csv("batting256.csv") be sure this file is in the working directory
+# summary(data)  
+# plot(data$y1~data$x1)
+# data[which.max(data$X1),]
+```
+
+Suggested Problems:
+
+1. Install `tidyverse`.
+
+2. Read in the `batting256.csv` file from the course sharepoint page.
+
+3. Summarise the data.  What data seems relevant for analysis. Irrelevant? How would you know?
+
+4. Create several plots that you might find interesting.
+
+5. Which player has played the most games? Registered the least hits?  What else do you find interesting?
 
 ***
+
 ## Lesson 3 - Data Collection using RVest
 
 1. Objective 1
@@ -174,7 +205,7 @@ added once finalized
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Lander Chapter 1-2 | Video | Problems | 
 
 
 ***
