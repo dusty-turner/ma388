@@ -49,7 +49,8 @@ A/Course Director: **<a href="https://lms.westpoint.edu/math/dusty.turner/SitePa
 
 ## Course Textbook
 
-Throughout MA388 we will use the 2nd edition of Jared Lander's textbook, **R For Everyone**.  
+As MA206 is a prerequisite, we will use the 9th edition of Jay Devore’s textbook, **Probability and Statistics for Engineering and the Sciences**.  In addition to that we will use the 2nd edition of Jared Lander’s textbook, **R for Everyone**.  Finally we have access to the 2nd edition of the sabermetrics textbook, **Understanding Sabermetrics**¸ written by our own Father Costa and two of his colleagues.  The course guide will be published on the course website, https://lms.westpoint.edu/math/ma388/SitePages/default.aspx
+
 
 ## Graded Events
 
