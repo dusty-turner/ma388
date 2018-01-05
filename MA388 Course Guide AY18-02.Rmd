@@ -285,7 +285,7 @@ You can now use this information to answer the suggested problems.
 
 4. Rename Column headers so that they are easier to understand.
 
-5. Filter the data by playerID, G, AB, R, H.
+5. Filter the data by playerID, yearID, AB, GamesBatting, GamesField, SBBatting, CSBatting, and HBatting.
 
 6. What is the average hits per season per player since 1975?
 
@@ -355,7 +355,7 @@ players =
 
 playersselected = 
   players %>%
-  select(playerID, yearID, AB, GamesBatting, GamesField, SBBatting, CSBatting)
+  select(playerID, yearID, AB, GamesBatting, GamesField, SBBatting, CSBatting, HBatting)
 
 # mean(playersselected$AB)
 
@@ -489,6 +489,85 @@ players3 %>%
 |-------------------|-----------------|-----------|
 |Reading | Video | Problems | 
 
+1. Using `players.csv`, plot a histogram of every athlete's career hits.
+
+2. Is there a relationship between games played and hits?
+
+3. How about career games played, hits, and steals?
+
+4. Create the plot above, but facet by year since 2008.
+
+5. Create labels and titles that make the plot appealing.
+
+6. Using your creativity, create several other plots that tell the story of the data.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+library(tidyverse)
+
+# 1. Using `players.csv`, plot a histogram of every athlete's career hits.
+players = read_csv("players.csv")
+
+plotter = players %>%
+  group_by(playerID) %>%
+  summarise(careerhits = sum(HBatting))
+
+ggplot(data = plotter, aes(x=careerhits)) +
+  geom_histogram()
+
+# 2. Is there a relationship between games played and hits?
+
+plotter = players %>%
+  group_by(playerID) %>%
+  summarise(careerhits = sum(HBatting), careeratbats = sum(AB))
+  
+ggplot(data = plotter, aes(x=careeratbats, y=careerhits)) +
+  geom_point()
+
+# 3. How about career games played, hits, and steals?
+
+plotter = players %>%
+  group_by(playerID) %>%
+  summarise(careerhits = sum(HBatting), careeratbats = sum(AB), careersteals = sum(SBBatting))
+  
+ggplot(data = plotter, aes(x = careeratbats, y = careerhits, color = careersteals)) +
+  geom_point()
+
+# 4. Create the plot above, but facet by year since 2008.
+
+plotter = players %>%
+  filter(yearID>2007)
+  
+ggplot(data = plotter, aes(x = AB, y = HBatting, color = SBBatting)) +
+  geom_point() +
+  facet_wrap("yearID")
+
+# 5. Create labels and titles that make the plot appealing.
+
+ggplot(data = plotter, aes(x = AB, y = HBatting, color = SBBatting)) +
+  geom_point() +
+  facet_wrap("yearID") +
+  labs(title = "Number of Hits vs At Bats by Year since 2008", y = "Hits",
+       x = "At Bats", color = "Stolen Bases")
+
+
+```
+
+
+
+***
+
+## Lesson 8 - Data Visualization
+
+1. Become proficient plotting with ggplot2 in R.
+
+2. Plot data to discover relationships between collumns of data.
+
+3. Use graphics to 'tell the story' of the data.
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Lander Chapter 7 |  | Suggested Problems Below | 
+
 ***
 
 # Block 2 - Multiple Linear Regression {#block2}
@@ -506,17 +585,6 @@ must add this later
 
 4. Take measures to transform data when linear modeling assumptions are violated.  
 
-***
-
-## Lesson 8 - Data Visualization
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
 
 ***
 
