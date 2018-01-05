@@ -600,41 +600,20 @@ ggplot(data = plotter, aes(x = AB, y = HBatting, color = SBBatting)) +
 
 ## Lesson 9 - Hypothesis Testing
 
-1. Objective 1
+1. Explain the purpose of conducting a hypothesis test.
 
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
-
-## Lesson 10 - Multiple Linear Regression 
-
-1. Objective 1
-
-2. Objective 2
+2. Explain the two types of error associated with hypothesis testing and the relationship between the two types.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Devore 8.1, | <!-- <a href="https://www.youtube.com/watch?v=cpL38ZeIecE" target="_blank">Hypothesis Testing</a>  --> | Problems | 
+|Supplemental Material|<!-- <a href="https://www.khanacademy.org/math/probability/statistics-inferential/hypothesis-testing/v/type-1-errors"target="_blank">Type I Error</a>  --> ||
+
+Supplemental Material: P-Value -- The p-value is the probability of obtaining the observed test statistic (or a more extreme result) when the null hypothesis is actually true. More simply stated, how rare is what I just saw if I assume the null hypothesis to be true?
 
 ***
 
-## Lesson 11 - Interaction Terms 
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
-
-## Lesson 12 - Modeling Assumptions 
+## Lesson 10 - Intro to Regression 
 
 1. Objective 1
 
@@ -646,7 +625,31 @@ ggplot(data = plotter, aes(x = AB, y = HBatting, color = SBBatting)) +
 
 ***
 
-## Lesson 13 - Non Linear Transformations
+## Lesson 11 - Assessing Normality 
+
+1. Objective 1
+
+2. Objective 2
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Reading | Video | Problems | 
+
+***
+
+## Lesson 12 - Predictor Transformations 
+
+1. Objective 1
+
+2. Objective 2
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Reading | Video | Problems | 
+
+***
+
+## Lesson 13 - Multiple Linear Regression
 
 1. Objective 1
 
@@ -740,6 +743,9 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
+## Lesson 21 - Cooperstown Drop
+
+***
 
 # Block 3 - Logistic Regression {#block3}
 
@@ -757,7 +763,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 21 - Intorudciton to Logistic Regression
+## Lesson 22 - Introduction to Logistic Regression
 
 1. Objective 1
 
@@ -769,7 +775,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 22 - Testing Signficance of Coefficients
+## Lesson 23 - Testing Signficance of Coefficients
 
 1. Objective 1
 
@@ -781,7 +787,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 23 - Interpretation of Fitted Logistic Regresion Models
+## Lesson 24 - Interpretation of Fitted Logistic Regresion Models
 
 1. Objective 1
 
@@ -793,7 +799,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 24 - Assessing Fit: ROC Curves and Classification
+## Lesson 25 - Assessing Fit: ROC Curves and Classification
 
 1. Objective 1
 
@@ -805,7 +811,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 25 - Logistic Regression Diagnostics
+## Lesson 26 - Logistic Regression Diagnostics
 
 1. Objective 1
 
@@ -817,7 +823,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 26 - Model Building With Logistic Regression
+## Lesson 27 - Model Building With Logistic Regression
 
 1. Objective 1
 
@@ -829,7 +835,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 27 - Problem Solving Lab 2 
+## Lesson 28 - Problem Solving Lab 2 
 
 1. Objective 1
 
@@ -841,7 +847,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 28 - Project PResentations: Logistic Regression
+## Lesson 29 - Project PResentations: Logistic Regression
 
 1. Objective 1
 
@@ -853,7 +859,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 29 - WPR2 Instructions
+## Lesson 30 - WPR2 Instructions
 
 ### Authorized References:
 
@@ -877,7 +883,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 30 - Introduction to Survival Analysis
+## Lesson 31 - Introduction to Survival Analysis
 
 1. Objective 1
 
@@ -889,7 +895,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 31 - Exploring Censored Data 
+## Lesson 32 - Exploring Censored Data 
 
 1. Objective 1
 
@@ -901,7 +907,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 32 - Fitting the Proportional Hazards Regression Model
+## Lesson 33 - Fitting the Proportional Hazards Regression Model
 
 1. Objective 1
 
@@ -913,7 +919,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 33 - Interpretation of Fitted Hazards Regression Models
+## Lesson 34 - Interpretation of Fitted Hazards Regression Models
 
 1. Objective 1
 
@@ -925,7 +931,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 34 - Model Development 
+## Lesson 35 - Model Development 
 
 1. Objective 1
 
@@ -937,7 +943,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 35 - Methods of Assessing the Hazards Assumptions 
+## Lesson 36 - Methods of Assessing the Hazards Assumptions 
 
 1. Objective 1
 
@@ -949,7 +955,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 36 - Assessment of Model Adequacy 
+## Lesson 37 - Assessment of Model Adequacy 
 
 1. Objective 1
 
@@ -961,7 +967,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 37 - Problem Solving Lab 3 
+## Lesson 38 - Problem Solving Lab 3 
 
 1. Objective 1
 
@@ -973,19 +979,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 38 - Project PResentation Part 3 
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
-
-## Lesson 39 - Cooperstown Drop 
+## Lesson 39 - Project PResentation Part 3 
 
 1. Objective 1
 
