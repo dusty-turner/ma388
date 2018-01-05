@@ -46,10 +46,13 @@ Course Director: **<a href="https://lms.westpoint.edu/math/jason.sharritt/SitePa
 <br>
 A/Course Director: **<a href="https://lms.westpoint.edu/math/dusty.turner/SitePages/Home.aspx" target="_blank">CPT Dusty Turner</a>**
 
-
 ## Course Textbook
 
 As MA206 is a prerequisite, we will use the 9th edition of Jay Devore’s textbook, **Probability and Statistics for Engineering and the Sciences**.  In addition to that we will use the 2nd edition of Jared Lander’s textbook, **R for Everyone**.  Finally we have access to the 2nd edition of the sabermetrics textbook, **Understanding Sabermetrics**¸ written by our own Father Costa and two of his colleagues.  The course guide will be published on the course website, https://lms.westpoint.edu/math/ma388/SitePages/default.aspx
+
+## Course Memo
+
+<!-- <a href="https://lms.westpoint.edu/math/ma388/SiteAssets/CD%20Memo%20AY18-02.pdf" target="_blank">MA388 Course Director Memo</a>  -->
 
 
 ## Graded Events
@@ -140,9 +143,9 @@ added once finalized
 
 ## Lesson 1 - Course Overview 
 
-1. Objective 1
+1. Complete Administrative Tasks
 
-2. Objective 2
+2. Review the Academic Integrity Brief
 
 3. [Find your instructor's MA388 page for specific day 1 instructions](#instructorpage)
 
@@ -491,7 +494,23 @@ players3 %>%
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+| |  |  | 
+
+***
+
+## Lesson 8 - Data Visualization
+
+1. Become proficient plotting with ggplot2 in R.
+
+2. Plot data to discover relationships between collumns of data.
+
+3. Use graphics to 'tell the story' of the data.
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Lander Chapter 7 |  | Suggested Problems Below | 
+
+### Suggested Problems
 
 1. Using `players.csv`, plot a histogram of every athlete's career hits.
 
@@ -504,6 +523,8 @@ players3 %>%
 5. Create labels and titles that make the plot appealing.
 
 6. Using your creativity, create several other plots that tell the story of the data.
+
+### R Help
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
 library(tidyverse)
@@ -557,27 +578,16 @@ ggplot(data = plotter, aes(x = AB, y = HBatting, color = SBBatting)) +
 ```
 
 
-
-***
-
-## Lesson 8 - Data Visualization
-
-1. Become proficient plotting with ggplot2 in R.
-
-2. Plot data to discover relationships between collumns of data.
-
-3. Use graphics to 'tell the story' of the data.
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Lander Chapter 7 |  | Suggested Problems Below | 
-
 ***
 
 # Block 2 - Multiple Linear Regression {#block2}
 
 must add this later
 <!-- <center>![](calendarblock2.png)</center> -->
+
+
+
+***
 
 ### Block 2 Objectives
 
@@ -590,9 +600,7 @@ must add this later
 4. Take measures to transform data when linear modeling assumptions are violated.  
 
 
-***
-
-## Lesson 9 - Exploratory Data Analysis
+## Lesson 9 - Hypothesis Testing
 
 1. Objective 1
 
