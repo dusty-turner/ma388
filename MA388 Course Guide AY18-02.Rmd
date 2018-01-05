@@ -66,25 +66,19 @@ MA388 is a 1000-point course.
 
 ## Course Objectives
 
-1.	Understand the notion of randomness and the role of variability and sampling in making inferences.
+1. Use the concepts of statistics and probability learned in MA206.
 
-2.  Develop proficiency with the open source statistical program R in order to create statistical models and communicate results through visual tools.  
+2. Develop proficiency with the open source statistical program R in order to create statistical models and communicate results through visual tools.  
 
 3. Attain, clean, join, and manipulate data in order to prepare it for statistical analysis. 
 
-4.	Construct, apply, assess, and communicate linear, logistic, and cox proportion models to estimate and interpret regression coefficients and draw conclusions from the models. 
+4. Use advanced modeling and statistical concepts to analyze baseball and other data. 
 
-5. Understand how variable transformations can assist when modeling assumptions are not met and be able to implement basic transformation of both outcome and explanatory variables. 
+5. Appreciate the relevance of baseball in utilizing statistical methods by investigating application problems and presenting results.
 
-6.	Model, solve, and interpret solutions to applied problems that can be examined using principles of probability theory, simulation, or statistical analysis.
+6. Communicate assumptions, models, and results using technical language in both written and oral formats.
 
-7.	Use technology with appropriate software to solve, gain insight, and improve understanding on probability and statistics problems.
-
-8.	 Communicate assumptions, models, and results using technical language in both written and oral formats.
-
-9.  Apply principles of probability and statistics to model and solve problems with baseball applications.
-
-10.	 Develop the skills to critically synthesize statistical data and analysis from all types of media to in order to develop rational, well informed conclusions and opinions about real world issues.  
+7. Develop the skills to critically synthesize statistical data and analysis from all types of media to in order to develop rational, well informed conclusions and opinions about real world issues.  
 
 
 ## Reference Sheets
