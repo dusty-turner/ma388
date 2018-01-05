@@ -491,7 +491,23 @@ players3 %>%
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+| |  |  | 
+
+***
+
+## Lesson 8 - Data Visualization
+
+1. Become proficient plotting with ggplot2 in R.
+
+2. Plot data to discover relationships between collumns of data.
+
+3. Use graphics to 'tell the story' of the data.
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Lander Chapter 7 |  | Suggested Problems Below | 
+
+### Suggested Problems
 
 1. Using `players.csv`, plot a histogram of every athlete's career hits.
 
@@ -504,6 +520,8 @@ players3 %>%
 5. Create labels and titles that make the plot appealing.
 
 6. Using your creativity, create several other plots that tell the story of the data.
+
+### R Help
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
 library(tidyverse)
@@ -556,21 +574,6 @@ ggplot(data = plotter, aes(x = AB, y = HBatting, color = SBBatting)) +
 
 ```
 
-
-
-***
-
-## Lesson 8 - Data Visualization
-
-1. Become proficient plotting with ggplot2 in R.
-
-2. Plot data to discover relationships between collumns of data.
-
-3. Use graphics to 'tell the story' of the data.
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Lander Chapter 7 |  | Suggested Problems Below | 
 
 ***
 
