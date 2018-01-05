@@ -67,7 +67,7 @@ MA388 is a 1000-point course.
 |Course Project (Block 4)|200|
 |Term End Exam|300|
 
-## Student Led Seminars
+## Student Lead Seminars
 
 Your instructor will assign you a date to present a chapter of Father Costa's Book **Understanding Sabermetrics**.  This will be worth a portion of your instructor points.  
 
@@ -126,8 +126,7 @@ The course calendar will be updated periodically.  This is current as of `r Sys.
 
 # Block 1 - Descriptive Statistics and Probability Theory {#block1}
 
-added once finalized
-<!-- <center>![](calendarblock1.png)</center> -->
+<center>![](calendarblock1.png)</center>
 
 ### Block 1 Objectives
 
@@ -582,8 +581,7 @@ ggplot(data = plotter, aes(x = AB, y = HBatting, color = SBBatting)) +
 
 # Block 2 - Multiple Linear Regression {#block2}
 
-must add this later
-<!-- <center>![](calendarblock2.png)</center> -->
+<center>![](calendarblock2.png)</center>
 
 
 
@@ -745,8 +743,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 # Block 3 - Logistic Regression {#block3}
 
-must add this later
-<!-- <center>![](calendarblock3.png)</center> -->
+<center>![](calendarblock3.png)</center>
 
 ### Block 3 Objectives
 
@@ -866,8 +863,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 # Block 4 - Survival Analysis {#block4}
 
-must add this later
-<!-- <center>![](calendarblock4.png)</center> -->
+<center>![](calendarblock4.png)</center>
 
 ### Block 4 Objectives
 
