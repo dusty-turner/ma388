@@ -64,6 +64,9 @@ MA388 is a 1000-point course.
 |Course Project (Block 4)|200|
 |Term End Exam|300|
 
+## Student Led Seminars
+
+Your instructor will assign you a date to present a chapter of Father Costa's Book **Understanding Sabermetrics**.  This will be worth a portion of your instructor points.  
 
 ## Course Objectives
 
