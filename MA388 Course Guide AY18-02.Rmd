@@ -46,10 +46,13 @@ Course Director: **<a href="https://lms.westpoint.edu/math/jason.sharritt/SitePa
 <br>
 A/Course Director: **<a href="https://lms.westpoint.edu/math/dusty.turner/SitePages/Home.aspx" target="_blank">CPT Dusty Turner</a>**
 
-
 ## Course Textbook
 
 As MA206 is a prerequisite, we will use the 9th edition of Jay Devore’s textbook, **Probability and Statistics for Engineering and the Sciences**.  In addition to that we will use the 2nd edition of Jared Lander’s textbook, **R for Everyone**.  Finally we have access to the 2nd edition of the sabermetrics textbook, **Understanding Sabermetrics**¸ written by our own Father Costa and two of his colleagues.  The course guide will be published on the course website, https://lms.westpoint.edu/math/ma388/SitePages/default.aspx
+
+## Course Memo
+
+<!-- <a href="https://lms.westpoint.edu/math/ma388/SiteAssets/CD%20Memo%20AY18-02.pdf" target="_blank">MA388 Course Director Memo</a>  -->
 
 
 ## Graded Events
@@ -137,9 +140,9 @@ added once finalized
 
 ## Lesson 1 - Course Overview 
 
-1. Objective 1
+1. Complete Administrative Tasks
 
-2. Objective 2
+2. Review the Academic Integrity Brief
 
 3. [Find your instructor's MA388 page for specific day 1 instructions](#instructorpage)
 
@@ -497,15 +500,6 @@ players3 %>%
 must add this later
 <!-- <center>![](calendarblock2.png)</center> -->
 
-### Block 2 Objectives
-
-1. Understand problems that linear regression can inform.  
-
-2. Understand the model building process.
-
-3. Know the assumptions necessary to perform linear regression.
-
-4. Take measures to transform data when linear modeling assumptions are violated.  
 
 ***
 
@@ -521,7 +515,18 @@ must add this later
 
 ***
 
-## Lesson 9 - Exploratory Data Analysis
+### Block 2 Objectives
+
+1. Understand problems that linear regression can inform.  
+
+2. Understand the model building process.
+
+3. Know the assumptions necessary to perform linear regression.
+
+4. Take measures to transform data when linear modeling assumptions are violated.  
+
+
+## Lesson 9 - Hypothesis Testing
 
 1. Objective 1
 
