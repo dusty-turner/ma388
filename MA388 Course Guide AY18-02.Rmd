@@ -165,7 +165,7 @@ The course calendar will be updated periodically.  This is current as of `r Sys.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Lander Chapter 3-6.2 |  | See Suggested Problems Below | 
+|Lander Chapter 3-6.2 |  | Suggested Problems Below | 
 
 ### Suggested Problems:
 
@@ -208,7 +208,7 @@ Helpful commands
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
 |Lander Chapter 6.7-6.9 |  | Suggested Problems Below | 
-|<a href="https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/" target="_blank">Web Scraping How Too</a>|||
+|<a href="https://blog.rstudio.com/2014/11/24/rvest-easy-web-scraping-with-r/" target="_blank">Web Scraping How To</a>|||
 
 
 ### Suggested Problems
