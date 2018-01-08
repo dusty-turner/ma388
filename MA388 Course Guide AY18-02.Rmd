@@ -234,12 +234,6 @@ Helpful commands
 Install / Load `rvest`
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 # install.packages("rvest")  
-# library(rvest) 
-```
-
-Install / Load `rvest`
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-# install.packages("rvest")  
 library(rvest)
 ```
 
@@ -987,7 +981,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 39 - Project PResentation Part 3 
+## Lesson 39 - Project Presentation Part 3 
 
 1. Objective 1
 
