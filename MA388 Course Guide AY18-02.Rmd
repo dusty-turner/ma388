@@ -887,21 +887,35 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ## Lesson 31 - Introduction to Survival Analysis
 
-1. Objective 1
+1. Understand the types of problems survival analysis can inform.
 
-2. Objective 2
+2. Understand the assumptions necessary for survival analysis.
+
+3. Create a Kaplan-Meier estimate by hand an in R.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Lander 20.4 | | Suggested Problems Below | 
+
+Kaplan-Meier estimator of the survivorship function at time `t`.
+
+$\hat{S}(t)=\prod_{t_{i}<t}\frac{n_{i}-d_{i}}{n_{i}}$
+
+### Suggested Problems
+
+1. What assumptions must we make in order to model with Survival Analysis.
+
+2. Think of 3 baseball related problems you could model with Survival Analysis and 3 non baseball prolbems.  
+
+3. What is a Kaplan-Meier estimate and what does each variable mean?  
 
 ***
 
 ## Lesson 32 - Exploring Censored Data 
 
-1. Objective 1
+1. Recognize the different types of censored data.
 
-2. Objective 2
+2. Understand how to code them in R.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
