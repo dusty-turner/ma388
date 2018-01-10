@@ -885,53 +885,180 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 31 - Introduction to Survival Analysis
+## Lesson 31 - Introduction to Survival Analysis: Exploring Censored Data
 
 1. Understand the types of problems survival analysis can inform.
 
 2. Understand the assumptions necessary for survival analysis.
 
-3. Create a Kaplan-Meier estimate by hand an in R.
+3. Identify the different types of censored data.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
 |Lander 20.4 | | Suggested Problems Below | 
 
-Kaplan-Meier estimator of the survivorship function at time `t`.
+There are two assumptions necessary for Survival Analysis:
 
-$\hat{S}(t)=\prod_{t_{i}<t}\frac{n_{i}-d_{i}}{n_{i}}$
+1. *Non-informative censoring* (explored this lesson).
+
+2. *Propotional hazards* (explored in future lessons).
 
 ### Suggested Problems
 
-1. What assumptions must we make in order to model with Survival Analysis.
+Between the Lander reading and your own internet research, answer the following questions.  
 
-2. Think of 3 baseball related problems you could model with Survival Analysis and 3 non baseball prolbems.  
+1. Why is Survival Analysis useful?  Why non linear regression?  
 
-3. What is a Kaplan-Meier estimate and what does each variable mean?  
+  - Logically?  
+  - Mathematically? 
+
+2. What does *Non-informative censoring* mean and why is this assumption necessary?
+
+3. Think of a baseball related example of...
+
+ - left censoring
+ - interval censoring
+ - right censoring
+
+4. Think of 2 baseball related problems you could model with Survival Analysis and 2 non baseball prolbems.  
+
 
 ***
 
-## Lesson 32 - Exploring Censored Data 
+## Lesson 32 - The Survival Function: The Kaplan-Meier Estimate
 
-1. Recognize the different types of censored data.
+1. Understand how a survival function is necessary for survival analysis.
 
-2. Understand how to code them in R.  
+2. Understand the Kaplan-Meier estimate and know how to calculate it by hand and in R. 
+
+3. Calculate quartile estimates of survival for the Kaplan-Meier estimate.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Lander 20.4 |  | Suggested Problems Below | 
+|Supplimental Reading |  |  | 
+
+### Supplimental Reading
+
+Kaplan-Meier Estimate
+
+Let the number at risk of dying at $t_{(i)}$ be denoted $n_{i}$ and the oberved number of deathrs be denoted $d_{i}$.
+
+We then obtain the Kaplan-Meier estimator of the survivorship function at time `t` from the equation.
+
+$\hat{S}(t)=\prod_{t_{i}<t}\frac{n_{i}-d_{i}}{n_{i}}$
+
+with the convention that 
+
+$\hat{S}(t)=1$ if $t<t_{(1)}$
+
+Essentially, $\hat{S}_{(t)}$ is the conditional probability of death at any given time $t$
+
+### Suggested Problems
+
+1. In your own words, what is a survival function.
+
+2. In your own words, what is a Kaplan-Meier estimate and what does each variable mean?  
+
+3. Calculate and draw a Kaplan-Meier estimate for the following data:
+
+|Obstacle|Fail Obstacle|Timed Out (Censored)|
+|-------------------|-----------------|-----------|
+|Piston Road| 0 | 0 |
+|Giant Ring| 2 | 0 |
+|Silk Slider| 21 | 0 |
+|Jumping Spider| 26 | 0 |
+|Half Pipe Attack| 2 | 0 |
+|Warped Wall| 0 | 2 |
+|Spinning Bridge| 8 | 0 |
+|Rope Ladder| 0 | 1 |
+
+**The above data was collected by COL (Ret) Rodney X Sturdivant from the 2014 season of American Ninja Warrior Stage 1**
+
+### R Help
+
+Read and prepare data.  We will discuss the nuances of this dataset in class.  
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(survival)
+
+managers = read_csv("managerssurvival.csv")
+managers = managers %>%
+  select(playerID, totalseasons, censor)
+
+survobj = Surv(managers$totalseasons,managers$censor)
+survobj[1:50]
+```
+
+No create the Kaplan-Meier Estimate Survivor Function
+
+This should look familiar
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+fit = survfit(survobj~1, data = managers)
+summary(fit)
+```
+
+Plot the Kaplan-Meier curve with the Survminer package. 
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(survminer)
+ggsurvplot(fit)
+```
+
 
 ***
 
-## Lesson 33 - Fitting the Proportional Hazards Regression Model
+## Lesson 33 - Fitting the Cox Proportional Hazards Model
 
-1. Objective 1
+1. Recognize the Cox Proportional Hazards Model.
 
-2. Objective 2
+2. Interpret Hazard Ratio and convey its meaning in terms of real world data.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+| Supplimental Reading Below |  | Suggested Problems Below | 
+
+### Suplimental Reading
+
+The Hazard Function:
+
+$h(t,x,\beta) = h_0(t)r(x,\beta)$
+
+The hazard function measures the failure ratio over the survival ratio.
+
+It is the product of two functions.  $h_0(t)$ characterizes how the hazard function changes as a function of survival time.  $r(x,\beta)$ characterizes how the hazard function changes as a function of covariates.  When $r(x,\beta)=1$, the hazard function is only a function of time and is often called the baseline hazard function.  
+
+Hazard Ratio (HR):
+
+If we want to see the impact of the hazard rate by changing one of our covariates, we can set up a hazard ratio like this:
+
+$HR(t,x_1,x_0) = \frac{h_0(t)r(x_1,\beta)}{h_0(t)r(x_0,\beta)}$
+
+or 
+
+$HR(t,x_1,x_0) = \frac{r(x_1,\beta)}{r(x_0,\beta)}$ since $h_0(t)$ cancels out and depends only on the covariates and not time.
+
+Sparing the details covered in MA476, Cox (1972) fit this model in the following way.  This is known as the Cox Proportional Hazards Model.
+
+$h(t,x,\beta)=h_0(t)e^{x\beta}$
+
+This form (exponentiated) is necessary to aid finding the $\beta$ coefficients that maximise the MLE.  
+
+Now when you find the hazard ratio (just like we did above by dividing by a change in covariate), this is what we find:
+
+$HR(t,x_1,x_0)=\frac{e^{x_1}\beta}{e^{x_0}\beta}$
+
+Taking it one step further.
+
+$HR(t,x_1,x_0)={e^{\beta(x_1-x_0)}}$
+
+Interpretation of the Hazard Ratio
+
+Put interpretation
+
+How to create this model in R
+
 
 ***
 
