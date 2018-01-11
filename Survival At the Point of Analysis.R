@@ -9,7 +9,9 @@ managersjoined =
 managers %>%
 left_join(teams, by = c("yearID", "teamID"))
 
-write.csv(managersjoined, "managersjoined.csv")
+# write.csv(managersjoined, "managersjoined.csv")
+managersjoined = read_csv("managersjoined.csv")
+
 
 survivaldata = 
 managersjoined %>%
@@ -61,3 +63,5 @@ ggsurvplot(fit)
 
 max(survivaldata$totalseasons)
 survivaldata[which.max(survivaldata$totalseasons),]
+
+write.csv(survivaldata, "managerssurvival.csv")

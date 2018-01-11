@@ -944,7 +944,7 @@ Kaplan-Meier Estimate
 
 Let the number at risk of dying at $t_{(i)}$ be denoted $n_{i}$ and the oberved number of deathrs be denoted $d_{i}$.
 
-We then obtain the Kaplan-Meier estimator of the survivorship function at time `t` from the equation.
+We then obtain the Kaplan-Meier estimator of the survivorship function at time $t$ from the equation.
 
 $\hat{S}(t)=\prod_{t_{i}<t}\frac{n_{i}-d_{i}}{n_{i}}$
 
@@ -952,7 +952,7 @@ with the convention that
 
 $\hat{S}(t)=1$ if $t<t_{(1)}$
 
-Essentially, $\hat{S}_{(t)}$ is the conditional probability of death at any given time $t$
+Essentially, $\hat{S}_{(t)}$ is the conditional probability of survival at any given time $t$
 
 ### Suggested Problems
 
@@ -960,18 +960,18 @@ Essentially, $\hat{S}_{(t)}$ is the conditional probability of death at any give
 
 2. In your own words, what is a Kaplan-Meier estimate and what does each variable mean?  
 
-3. Calculate and draw a Kaplan-Meier estimate for the following data:
+3. Calculate and draw a Kaplan-Meier estimate for the following data:  62 Contestants start the competition.  
 
-|Obstacle|Fail Obstacle|Timed Out (Censored)|
-|-------------------|-----------------|-----------|
-|Piston Road| 0 | 0 |
-|Giant Ring| 2 | 0 |
-|Silk Slider| 21 | 0 |
-|Jumping Spider| 26 | 0 |
-|Half Pipe Attack| 2 | 0 |
-|Warped Wall| 0 | 2 |
-|Spinning Bridge| 8 | 0 |
-|Rope Ladder| 0 | 1 |
+|Obstacle|Fail Obstacle|Timed Out (Censored)| Kaplan-Meier Estimate at time $t$ |
+|-------------------|-----------------|-----------|---|
+|Piston Road| 0 | 0 ||
+|Giant Ring| 2 | 0 ||
+|Silk Slider| 21 | 0 ||
+|Jumping Spider| 26 | 0 ||
+|Half Pipe Attack| 2 | 0 ||
+|Warped Wall| 0 | 2 ||
+|Spinning Bridge| 8 | 0 ||
+|Rope Ladder| 0 | 1 ||
 
 **The above data was collected by COL (Ret) Rodney X Sturdivant from the 2014 season of American Ninja Warrior Stage 1**
 
@@ -981,16 +981,15 @@ Read and prepare data.  We will discuss the nuances of this dataset in class.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(survival)
-
 managers = read_csv("managerssurvival.csv")
 managers = managers %>%
-  select(playerID, totalseasons, censor)
+  select(playerID, totalseasons, censor, lgID.x, totalwins, PercentLast2, PercentLast3)
 
 survobj = Surv(managers$totalseasons,managers$censor)
 survobj[1:50]
 ```
 
-No create the Kaplan-Meier Estimate Survivor Function
+Now create the Kaplan-Meier Estimate of the Survivor Function
 
 This should look familiar
 
@@ -1013,23 +1012,25 @@ ggsurvplot(fit)
 
 1. Recognize the Cox Proportional Hazards Model.
 
-2. Interpret Hazard Ratio and convey its meaning in terms of real world data.  
+2. Interpret Hazard Ratio and convey its meaning in terms of real world problems.  
+
+3. Create the Cox Proportional Hazards Model in R.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-| Supplimental Reading Below |  | Suggested Problems Below | 
+| Supplimental Reading Below |  |  | 
 
 ### Suplimental Reading
 
-The Hazard Function:
+#### The Hazard Function:
 
 $h(t,x,\beta) = h_0(t)r(x,\beta)$
 
-The hazard function measures the failure ratio over the survival ratio.
+The hazard function measures the failure ratio over the survival ratio as a function of time $t$, covariates $x_i$, and $\hat{\beta}$.
 
 It is the product of two functions.  $h_0(t)$ characterizes how the hazard function changes as a function of survival time.  $r(x,\beta)$ characterizes how the hazard function changes as a function of covariates.  When $r(x,\beta)=1$, the hazard function is only a function of time and is often called the baseline hazard function.  
 
-Hazard Ratio (HR):
+#### Hazard Ratio (HR):
 
 If we want to see the impact of the hazard rate by changing one of our covariates, we can set up a hazard ratio like this:
 
@@ -1041,7 +1042,7 @@ $HR(t,x_1,x_0) = \frac{r(x_1,\beta)}{r(x_0,\beta)}$ since $h_0(t)$ cancels out a
 
 Sparing the details covered in MA476, Cox (1972) fit this model in the following way.  This is known as the Cox Proportional Hazards Model.
 
-$h(t,x,\beta)=h_0(t)e^{x\beta}$
+$h(t,x,\beta)=h_0(t)e^{x\beta}$ As you can see, $r(x_0,\beta) = e^{x\beta}$
 
 This form (exponentiated) is necessary to aid finding the $\beta$ coefficients that maximise the MLE.  
 
@@ -1053,24 +1054,62 @@ Taking it one step further.
 
 $HR(t,x_1,x_0)={e^{\beta(x_1-x_0)}}$
 
-Interpretation of the Hazard Ratio
+#### Interpretation of the Hazard Ratio
 
-Put interpretation
+The interpretation of the HR is appealing because it is a "relative risk" type ratio.
 
-How to create this model in R
+For example if you have a hazard rate that looks like this:
 
+$HR = e^{2x_{1}}$ ie, your $\beta = 2$ is your hazard ratio.
+
+If $x$ is a dicotomus variable.  If x is present ($x=1$ vs $x=0$), then your subjects are dying at twice the rate as the base populations.
+
+If $HR = e^{\frac{1}{2}x_{1}}$, ie, your $\beta = \frac{1}{2}$, then when x is present ($x=1$ vs $x=0$), then your subjects are dying at half the rate as the base population.  
+
+Otherwise, if $x$ is a continuous factor, for every one unit increase in $x$ would be a one unit increase in the hazard ratio.  
+
+#### Hazard Ratio Summary:
+
+A Hazard Ratio = 1 means no difference in the populations. <br>
+A Hazard Ratio > 1 means death is more likely for the presense or increase in that factor.<br>
+A Hazard Ratio < 1 means death is less likely for the presense or increase in that factor.<br>
+
+### R Help
+
+```{r include=FALSE}
+options(scipen=3)
+```
+
+From the previous lesson, we have the following survival function:
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+survobj = Surv(managers$totalseasons,managers$censor)
+```
+
+We can run our Cox Proportional Hazards Model on our survival fuction.
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+mod = coxph(survobj ~ totalwins + PercentLast2 + PercentLast3 + lgID.x,data = managers)
+summary(mod)
+```
+
+Our Interpretations will follow next class.  
 
 ***
 
 ## Lesson 34 - Interpretation of Fitted Hazards Regression Models
 
-1. Objective 1
+1. Interpret the `coef` and `exp(coef)` in our Cox Proportional Hazards Model Summary.
 
-2. Objective 2
+2. Understand what the confidence intervals for our $\hat{\beta}$ of our Cox Proportional Hazards model imply.
+
+3. Properly interpret P Values of the CoxPH model. 
+
+4. Understand the liklihood ratio test and what that says about the model.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+|Supplimental Reading Below |  | Suggested Problems Below | 
 
 ***
 
