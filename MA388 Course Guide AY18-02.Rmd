@@ -713,27 +713,15 @@ Supplemental Material: P-Value -- The p-value is the probability of obtaining th
 
 ## Lesson 18 - Problem Solving Lab 1
 
-1. Objective 1
-
-2. Objective 2
-
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+| |  | Instructor Specific | 
 
 ***
 
-## Lesson 19 - Project Presentations Linear Models
+## Lesson 19 - Project Presentations: Linear Models
 
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
+The presentation schedule will be posted by your instructor.
 
 ***
 
@@ -849,15 +837,9 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 29 - Project PResentations: Logistic Regression
+## Lesson 29 - Project Presentations: Logistic Regression
 
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+The presentation schedule will be posted by your instructor.
 
 ***
 
@@ -1225,27 +1207,17 @@ ggcoxdiagnostics(mod, type = "deviance", linear.predictions = FALSE)
 
 ***
 
-## Lesson 39 - Project Presentation Part 3 
+## Lesson 39 - Project Presentation: Survival Analysis 
 
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+The presentation schedule will be posted by your instructor.
 
 ***
 
 ## Lesson 40 - Course Review: Problem Solving Lab 4 
 
-1. Objective 1
-
-2. Objective 2
-
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+| |  |  | 
 
 ***
 
