@@ -129,11 +129,11 @@ The course calendar will be updated periodically.  This is current as of `r Sys.
 
 ### Block 1 Objectives
 
-1. Develop proficicney in R and become self sufficient when overcoming codeing problems.
+1. Develop proficiency in R and become self sufficient when overcoming coding problems.
 
 2. Attain, clean, join, and manipulate data in order to prepare it for statistical analysis.
 
-3. Create visualizations that provide insite into the data.
+3. Create visualizations that provide insight into the data.
 
 4. Develop an appreciation for the history of Sabermetrics.  
 
@@ -173,7 +173,7 @@ The course calendar will be updated periodically.  This is current as of `r Sys.
 
 2. Read in the `batting256.csv` file from the course sharepoint page.
 
-3. Summarise the data.  What data seems relevant for analysis. Irrelevant? How would you know?
+3. Summaries the data.  What data seems relevant for analysis. Irrelevant? How would you know?
 
 4. Create several plots that you might find interesting.
 
@@ -203,7 +203,7 @@ Helpful commands
 
 2. Understand ethical responsibilities of data scraping.
 
-3. Successfully 'scrape' data from the intrnet using R
+3. Successfully 'scrape' data from the internet using R
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
@@ -215,17 +215,17 @@ Helpful commands
 
 1. Install the <a href="http://selectorgadget.com/" target="_blank">Selector Gadget</a> tool.  
   - You must use Chrome
-  - Find the part of the page that says "Or drage this link to your bookmark bar."  Drag the link to the book mark bar.
+  - Find the part of the page that says "Or drag this link to your bookmark bar."  Drag the link to the book mark bar.
   - Test that it has installed properly by clicking on the bookmark.  You will know its a success when a box appears in the bottom right corner of your browser and your screen begins to highlight where your mouse rests. 
   - Click on the data of interest on the website to select the proper CSS tag.  
 
 2. Install the `rvest` package using the `install.packages("rvest")` command.
 
-3. 'Scrape' the batting statistics from the <a href="https://www.baseball-reference.com/teams/TEX/2017.shtml" target="_blank">Texas Ranger's</a> page at Baseball Refrence.  
+3. 'Scrape' the batting statistics from the <a href="https://www.baseball-reference.com/teams/TEX/2017.shtml" target="_blank">Texas Ranger's</a> page at Baseball Reference.  
 
 4.  Create plot hits vs batting average.  Create other plots that help you visualize the data.
 
-5. Summarise the data.  Who lead the team in RBIs?  Hits?  Strikeouts? Of players who has at least 50 plate appearances, who had the highest batting average?  
+5. Summaries the data.  Who lead the team in RBIs?  Hits?  Strikeouts? Of players who has at least 50 plate appearances, who had the highest batting average?  
 
 6. What issues did you run into during this process?  What was harder: Getting the data or getting the data in a usable format to analyse the data?
 
@@ -280,7 +280,7 @@ You can now use this information to answer the suggested problems.
 
 2. 'Join' the the tables together using a full join.  Join the tables on columns such that you do not duplicate data.
 
-3. Select all rows which occured since 1975.
+3. Select all rows which occurred since 1975.
 
 4. Rename Column headers so that they are easier to understand.
 
@@ -307,7 +307,7 @@ To use this function, you place arguments in it like you have previously in MA20
 myfunction(3,4)
 ```
 
-The `%>%` allows us to pipe in the first argement into our function.  See below:
+The `%>%` allows us to pipe in the first argument into our function.  See below:
 
 ```{r echo=TRUE}
 3 %>% myfunction(4)
@@ -494,7 +494,7 @@ players3 %>%
 
 1. Become proficient plotting with ggplot2 in R.
 
-2. Plot data to discover relationships between collumns of data.
+2. Plot data to discover relationships between columns of data.
 
 3. Use graphics to 'tell the story' of the data.
 
@@ -627,7 +627,7 @@ Supplemental Material: P-Value -- The p-value is the probability of obtaining th
 
 1. Explain the benefits of using a Normal Probability Plot vs. a Histogram.
 
-2. Create a Normal Probability plo in R.
+2. Create a Normal Probability plot in R.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
@@ -902,7 +902,7 @@ Between the Lander reading and your own internet research, answer the following 
  - interval censoring
  - right censoring
 
-4. Think of 2 baseball related problems you could model with Survival Analysis and 2 non baseball prolbems.  
+4. Think of 2 baseball related problems you could model with Survival Analysis and 2 non baseball problems.  
 
 
 ***
@@ -918,13 +918,13 @@ Between the Lander reading and your own internet research, answer the following 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
 |Lander 20.4 |  | Suggested Problems Below | 
-|Supplimental Reading |  |  | 
+|Supplemental Reading |  |  | 
 
 ### Supplimental Reading
 
 Kaplan-Meier Estimate
 
-Let the number at risk of dying at $t_{(i)}$ be denoted $n_{i}$ and the oberved number of deathrs be denoted $d_{i}$.
+Let the number at risk of dying at $t_{(i)}$ be denoted $n_{i}$ and the observed number of deaths be denoted $d_{i}$.
 
 We then obtain the Kaplan-Meier estimator of the survivorship function at time $t$ from the equation.
 
@@ -959,7 +959,7 @@ Essentially, $\hat{S}_{(t)}$ is the conditional probability of survival at any g
 
 ### R Help
 
-Read and prepare data.  We will discuss the nuances of this dataset in class.  
+Read and prepare data.  We will discuss the nuances of this data set in class.  
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(survival)
@@ -1001,7 +1001,7 @@ ggsurvplot(fit)
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-| Supplimental Reading Below |  |  | 
+| Supplemental Reading Below |  |  | 
 
 ### Suplimental Reading
 
@@ -1027,7 +1027,7 @@ Sparing the details covered in MA476, Cox (1972) fit this model in the following
 
 $h(t,x,\beta)=h_0(t)e^{x\beta}$ As you can see, $r(x_0,\beta) = e^{x\beta}$
 
-This form (exponentiated) is necessary to aid finding the $\beta$ coefficients that maximise the MLE.  
+This form (exponentiated) is necessary to aid finding the $\beta$ coefficients that maximize the MLE.  
 
 Now when you find the hazard ratio (just like we did above by dividing by a change in covariate), this is what we find:
 
@@ -1045,7 +1045,7 @@ For example if you have a hazard rate that looks like this:
 
 $HR = e^{2x_{1}}$ ie, your $\beta = 2$ is your hazard ratio.
 
-If $x$ is a dicotomus variable.  If x is present ($x=1$ vs $x=0$), then your subjects are dying at twice the rate as the base populations.
+If $x$ is a dichotomous variable.  If x is present ($x=1$ vs $x=0$), then your subjects are dying at twice the rate as the base populations.
 
 If $HR = e^{\frac{1}{2}x_{1}}$, ie, your $\beta = \frac{1}{2}$, then when x is present ($x=1$ vs $x=0$), then your subjects are dying at half the rate as the base population.  
 
@@ -1054,8 +1054,8 @@ Otherwise, if $x$ is a continuous factor, for every one unit increase in $x$ wou
 #### Hazard Ratio Summary:
 
 A Hazard Ratio = 1 means no difference in the populations. <br>
-A Hazard Ratio > 1 means death is more likely for the presense or increase in that factor.<br>
-A Hazard Ratio < 1 means death is less likely for the presense or increase in that factor.<br>
+A Hazard Ratio > 1 means death is more likely for the presence or increase in that factor.<br>
+A Hazard Ratio < 1 means death is less likely for the presence or increase in that factor.<br>
 
 ### R Help
 
@@ -1069,7 +1069,7 @@ From the previous lesson, we have the following survival function:
 survobj = Surv(managers$totalseasons,managers$censor)
 ```
 
-We can run our Cox Proportional Hazards Model on our survival fuction.
+We can run our Cox Proportional Hazards Model on our survival function.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 mod = coxph(survobj ~ totalwins + PercentLast2 + PercentLast3 + lgID.x,data = managers)
@@ -1088,7 +1088,7 @@ Our Interpretations will follow next class.
 
 3. Properly interpret P Values of the CoxPH model. 
 
-4. Understand the liklihood ratio test and what that says about the model.  
+4. Understand the likelihood ratio test and what that says about the model.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
@@ -1096,20 +1096,20 @@ Our Interpretations will follow next class.
 
 ### Suggested Problems
 
-Using the R Output from the previous lesson and refrencing the reading link, answer the following questions:
+Using the R Output from the previous lesson and referencing the reading link, answer the following questions:
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 mod = coxph(survobj ~ totalwins + PercentLast2 + PercentLast3 + lgID.x,data = managers)
 summary(mod)
 ```
 
-1. Which models are considered "significant" to a coachers survival?
+1. Which models are considered "significant" to a coaches survival?
 
 2. What is the regression coefficient for winning percentage over the last two years?
 
 3. What is the hazard ratio for winning percentage over the last two years?
 
-4. How do we get the harzard ratio from the regression coefficient?
+4. How do we get the hazard ratio from the regression coefficient?
 
 5. How do we calculate the P Value?  How am I to interpret the P Value?
 
@@ -1126,9 +1126,9 @@ summary(mod)
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-| Supplimental Reading |  | Suggested Problems Below | 
+| Supplemental Reading |  | Suggested Problems Below | 
 
-In order to select a **best** model when using survival analysis, use the following steps.  This process is called Purposeful Selection.  This process is a summarised version of the methodology taught by Hosmer, Lemeshow, Sturdivant in *Applied Logistic Regression, Third Edition*
+In order to select a **best** model when using survival analysis, use the following steps.  This process is called Purposeful Selection.  This process is a summarized version of the methodology taught by Hosmer, Lemeshow, Sturdivant in *Applied Logistic Regression, Third Edition*
 
 *Purposeful Selection*
 
@@ -1136,14 +1136,14 @@ In order to select a **best** model when using survival analysis, use the follow
 
 2. Initial multivariable model:  Create a model with all factors that make it past the univariate analysis.  
 
-3. Iterativly remove factors: Remove factors one at a time by highest P Value.  Collapse discrete factors which are not signficant one at a time into their base level.
+3. Iterativly remove factors: Remove factors one at a time by highest P Value.  Collapse discrete factors which are not significant one at a time into their base level.
 
 4.  Preliminary Final Model: Test interactions between factors which you believe may have significance.  Repeat previous steps if necessary.  
 5.  Final Model: Check adequacy and model fit (covered next lesson)
 
 ### Suggested Problems
 
-Using the `managerssurvival.csv` dataset from the course sharepoint, use purposeful selection to create a model.  
+Using the `managerssurvival.csv` data set from the course share-point, use purposeful selection to create a model.  
 
 ***
 
@@ -1153,7 +1153,7 @@ Using the `managerssurvival.csv` dataset from the course sharepoint, use purpose
 
 2. Graphically Assess the Proportional Hazards Assumption.
 
-3. Indentify Influential and Poorly Fit Subjects.
+3. Identify Influential and Poorly Fit Subjects.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
