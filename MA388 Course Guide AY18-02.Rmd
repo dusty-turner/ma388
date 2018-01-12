@@ -1185,26 +1185,31 @@ Using the `managerssurvival.csv` dataset from the course sharepoint, use purpose
 
 ### R Help
 
+Assessing the proportional hazards assumption.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
+library(survminer)
+test.ph = cox.zph(mod)
+ggcoxzph(test.ph, df = 3)
+```
 
+Identifying Influential Observations
+
+```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(survminer)
 ggcoxdiagnostics(mod, type = "dfbeta", linear.predictions = FALSE)
 ggcoxdiagnostics(mod, type = "deviance", linear.predictions = FALSE)
-
 ```
 
 ***
 
 ## Lesson 37 - Assessment of Model Adequacy 
 
-1. Objective 1
-
-2. Objective 2
+1. Apply the Likelihood Ratio Test to compare models.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+| |  |  | 
 
 ***
 

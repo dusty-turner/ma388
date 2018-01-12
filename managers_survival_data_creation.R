@@ -18,6 +18,8 @@ managers %>%
 
 nrow(uniquemanagers)
 
+
+
 ### did this to get last two percentage
 
 winvec = NULL

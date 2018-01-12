@@ -65,3 +65,13 @@ max(survivaldata$totalseasons)
 survivaldata[which.max(survivaldata$totalseasons),]
 
 write.csv(survivaldata, "managerssurvival.csv")
+
+
+## test ph
+
+test.ph = cox.zph(mod)
+test.ph
+library(survminer)
+ggcoxzph(test.ph, df = 2)
+ggcoxdiagnostics(mod, type = "dfbeta", linear.predictions = FALSE)
+ggcoxdiagnostics(mod, type = "deviance", linear.predictions = FALSE)
