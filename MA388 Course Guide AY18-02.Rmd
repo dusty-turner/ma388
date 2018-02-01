@@ -599,10 +599,23 @@ ggplot(data = plotter, aes(x = AB, y = HBatting, color = SBBatting)) +
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Devore 8.1, | **<a href="https://www.youtube.com/watch?v=cpL38ZeIecE" target="_blank">Hypothesis Testing</a>** | Problems | 
+|Devore 8.1, | **<a href="https://www.youtube.com/watch?v=cpL38ZeIecE" target="_blank">Hypothesis Testing</a>** | Suggested Problems Below | 
 |Supplemental Material|**<a href="https://www.khanacademy.org/math/probability/statistics-inferential/hypothesis-testing/v/type-1-errors"target="_blank">Type I Error</a>** ||
 
 Supplemental Material: P-Value -- The p-value is the probability of obtaining the observed test statistic (or a more extreme result) when the null hypothesis is actually true. More simply stated, how rare is what I just saw if I assume the null hypothesis to be true?
+
+***
+### Suggested Problems
+
+1. What is the definition of a Type I error?  What about a Type II error?
+
+2. How is alpha and beta related to the question above?
+
+3. Relative to the steroids question, what hypotheses could we make?
+
+4. What are the type I and II errors related to the question above?
+
+5. Which is more dangerous, a type I or type II error?
 
 ***
 
@@ -618,8 +631,19 @@ Supplemental Material: P-Value -- The p-value is the probability of obtaining th
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
-|Reading |**<a href="https://www.youtube.com/watch?v=66z_MRwtFJM" target="_blank">SLR in R</a>**| Problems | 
+|Reading |**<a href="https://www.youtube.com/watch?v=66z_MRwtFJM" target="_blank">SLR in R</a>**| Suggested Problems Below | 
 ||**<a href="https://www.khanacademy.org/math/probability/regression" target="_blank">Khan Academy Video - Regression</a>**
+
+***
+### Suggested Problems
+
+1. Using `players.csv`, investigate the relationship between a player's 2Bs and steals.
+
+2. Is there a relationship between years and steals?
+
+3. How much variation is explained by the either of those models?
+
+4. Are there better single predictors for steals?
 
 ***
 
