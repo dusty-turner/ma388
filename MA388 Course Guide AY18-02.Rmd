@@ -753,11 +753,7 @@ The presentation schedule will be posted by your instructor.
 
 ### Authorized References:
 
-You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back).  All notes **MUST** be handwritten **BY YOU**.  In addition to your handwritten notes, you may reference a digital copy or unaltered hard copy of the MA388 Reference Sheet during the WPR.  You may use any calculator you want, and you may use Excel, Mathematica, and RStudio provided that you start with a blank workbook, notebook, or script, respectively.
-
-***
-
-## Lesson 21 - Cooperstown Drop
+Specific references will be published by the course director before the WPR.
 
 ***
 
@@ -773,15 +769,153 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 3. Know the assumptions necessary to perform logistic regression.
 
-4. Take measures to transform data when logistic regression modeling assumptions are violated.   
+4. Become a knowledgeable consumer of statistical information.  
 
 ***
 
-## Lesson 22 - Introduction to Logistic Regression
 
-1. Objective 1
+## Lesson 21 - Introduction to Logistic Regression Part I
 
-2. Objective 2
+1. Recognize types of problems that can be informed by logistic regression and when the method should and should not be applied.
+
+2. Understand assumptions necessary for logistic regression. 
+
+3. Define the logistic regression model.
+
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Supplemental Reading Below |  | Suggested Problems Below | 
+
+First create the following dataframe from the `HallofFame.csv`, `Fielding.csv`, and `Batting.csv` files provided on the course website.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+hof = read_csv("HallOfFame.csv") %>%
+  filter(inducted == "Y") %>% 
+  select(playerID, inducted)
+
+fielding = read_csv("Fielding.csv") %>%
+  select(playerID, yearID, POS, G, PO, A, E, DP) %>%
+  filter(POS!="P")
+
+batting = read_csv("Batting.csv") %>%
+  select(playerID, yearID, G, AB, R, H, `2B`, `3B`, HR, RBI, SB, BB, SO) %>%
+  filter(yearID >1911)
+
+joined = fielding %>%
+  inner_join(batting, by = c("playerID", "yearID") ,suffix = c(".fielding", ".batting")) 
+
+careerstats = joined %>% group_by(playerID) %>%
+  select(-POS, -yearID) %>%
+  summarise_all(funs(sum)) %>%
+  left_join(hof)
+
+maxyear = joined %>%
+  select(playerID, yearID) %>% group_by(playerID) %>%
+  arrange(playerID, yearID) %>%
+  summarise(lastyear = max(yearID))
+
+primaryposition = joined %>% group_by(playerID, POS) %>% select(playerID, yearID,G.fielding,POS) %>%
+  arrange(playerID) %>%
+  summarise(gamesatprimarypos = sum(G.fielding)) %>% group_by(playerID) %>%
+  arrange(playerID, desc(gamesatprimarypos)) %>%
+  slice(1)
+  
+hofdata = careerstats %>%
+left_join(maxyear) %>% 
+  left_join(primaryposition) %>%
+  mutate(HOF = ifelse(is.na(inducted),0,1)) %>%
+  select(-inducted)
+```
+### Suggested Problems
+
+1. Create a pairwise plot of the `hof` data.
+
+2. Create a linear model to predict if a player makes it into the Hall of Fame.  Use HOF as the 'predicted' variable and 'AB' and 'HR' as the 'predictors.'
+
+3. What are the issues you see with this model?
+
+### Necessary Assumptions for Logistic Regression:
+
+1. The dependent variable should be dichotomous (ie 0/1, Y/N, present/absent).
+
+2. There should be no high correlations (multicollinearity) among the predictors.  You can assess this by looking at the pairs plot or creating a correlation matrix.  
+
+### The Logistic Regression Model.
+
+Do your best to define each term.  Your instructor will go into details in class.
+
+$log(\frac{p}{1-p}) = \beta_0 + \beta_{x1} + \beta_{x2} + ... + \beta_{xn}$
+
+The right hand side of this equation should look familiar.  The right hand side of this equation is called the 'logit' or the log odds.  The `beta` coefficients, instead of being calculated by the least squares method are created via the maximum likelihood.
+
+***
+
+## Lesson 22 - Introduction to Logistic Regression Part II
+
+1. Create a logistic regression model in R.
+
+2. Explain the log-odds, odds, and probability from a logistic regression model.
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Supplemental reading below |  | Suggested Problems Below | 
+
+***
+
+## Lesson 23 - Interpretation of Fitted Logistic Regresion Models
+
+1. Interpret the results of a logistic regression model in terms of a real world situation.
+
+2. Build a logistic regression model using appropriate model building techniques. 
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Supplemental reading below |  | Suggested Problems Below | 
+
+***
+
+## Lesson 24 - Assessing Fit: ROC Curves and Classification
+
+1. From a logistic regression model, create a ROC Curve and understand its implications.
+
+2. Produce the "Area Under the Curve" and interpret its meaning.
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Supplemental reading below |  | Suggested Problems Below |
+
+***
+
+## Lesson 25 - Assessing Fit: Sensitivity and Specificity
+
+1. Produce and interpret a models sensitivity and specificity.
+
+2. Determine the optimal cut point for your model according to stated goals.
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Supplemental reading below |  | Suggested Problems Below |
+
+***
+
+
+## Lesson 26 - Model Comparison in Logistic Regression
+
+1. Understand what a model's 'deviance' and understand the 'likelihood ratio test.'
+
+1. Given two models, determine which model is the "better" model.
+
+|Familiarize|Watch|Suggested Problems|
+|-------------------|-----------------|-----------|
+|Supplemental reading below |  | Suggested Problems Below |
+
+***
+
+## Lesson 27 - Problem Solving Lab 2 
+
+1. Specific instructions will be provided by your instructor prior to class.  
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
@@ -789,75 +923,7 @@ You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back
 
 ***
 
-## Lesson 23 - Testing Signficance of Coefficients
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
-
-## Lesson 24 - Interpretation of Fitted Logistic Regresion Models
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
-
-## Lesson 25 - Assessing Fit: ROC Curves and Classification
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
-
-## Lesson 26 - Logistic Regression Diagnostics
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
-
-## Lesson 27 - Model Building With Logistic Regression
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
-
-***
-
-## Lesson 28 - Problem Solving Lab 2 
-
-1. Objective 1
-
-2. Objective 2
-
-|Familiarize|Watch|Suggested Problems|
-|-------------------|-----------------|-----------|
-|Reading | Video | Problems | 
+## Lesson 28 - Cooperstown Drop
 
 ***
 
@@ -871,7 +937,7 @@ The presentation schedule will be posted by your instructor.
 
 ### Authorized References:
 
-You are authorized to bring one sheet of notes (8.5$''$ x 11$''$, front and back).  All notes **MUST** be handwritten **BY YOU**.  In addition to your handwritten notes, you may reference a digital copy or unaltered hard copy of the MA388 Reference Sheet during the WPR.  You may use any calculator you want, and you may use Excel, Mathematica, and RStudio provided that you start with a blank workbook, notebook, or script, respectively.
+Specific references will be published by the course director before the WPR.
 
 ***
 
