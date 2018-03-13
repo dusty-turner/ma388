@@ -787,6 +787,8 @@ Specific references will be published by the course director before the WPR.
 |-------------------|-----------------|-----------|
 |Supplemental Reading Below |  | Suggested Problems Below | 
 
+### Supplemental Reading
+
 First create the following dataframe from the `HallofFame.csv`, `Fielding.csv`, and `Batting.csv` files provided on the course website.
 
 ```{r message=FALSE, warning=FALSE}
@@ -862,17 +864,72 @@ The right hand side of this equation should look familiar.  The right hand side 
 |-------------------|-----------------|-----------|
 |Supplemental reading below |  | Suggested Problems Below | 
 
+### Suggested Problems
+
+1. Define each portion of the logistic regression equation below.  Is the right side linear or non linear?  Is the left side linear or non linear? What does one unit change in $x1$ mean?
+
+$log(\frac{p}{1-p}) = \beta_0 + \beta_{x1} + \beta_{x2} + ... + \beta_{xn}$
+
+2. Define each portion of the logistic regression equation below.  Is either side linear?  What does one unit change in $x1$ mean?
+
+$\frac{p}{1-p} = e^{\beta_0 + \beta_{x1} + \beta_{x2} + ... + \beta_{xn}}$
+
+3. Define each portion of the logistic regression equation below.  Is either side linear?  
+
+$p = \frac{e^{\beta_0 + \beta_{x1} + \beta_{x2} + ... + \beta_{xn}}}{1+e^{\beta_0 + \beta_{x1} + \beta_{x2} + ... + \beta_{xn}}$
+
+### Suplimental Reading
+
+Here is how to create a logistic regression model in R.
+
+```{r message=FALSE, warning=FALSE}
+options(scipen = 999)
+logisticmod = glm(HOF~HR+RBI+lastyear+POS,data = hofdata, family = binomial(link="logit"))
+summary(logisticmod)
+```
+
+For every one unit change in HRs, the log odds of making the Hall of Fame increases by $.0000640$.
+
+To see how it impact the odds, we can also look at it this way:
+
+```{r message=FALSE, warning=FALSE}
+exp(coef(logisticmod))
+```
+
+For every one unit change in HR, the odds of making the HOF increases by $e^{\beta_1}$ or $e^{.0000640}$
+
 ***
 
-## Lesson 23 - Interpretation of Fitted Logistic Regresion Models
+## Lesson 23 - Model Building with Logistic Regresion Models
 
-1. Interpret the results of a logistic regression model in terms of a real world situation.
-
-2. Build a logistic regression model using appropriate model building techniques. 
+1. Understand purposeful selection and execute it in building logistic models in R.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
 |Supplemental reading below |  | Suggested Problems Below | 
+
+### Supplimental Reading
+
+The following is the purposeful selection method for logistic regression.  Use this for all model building techniques in class for logistic regression.  This is a variation of the purposeful selection method provided by Hosmer/Lemeshow/Sturdivant.
+
+1. Fit all univariate models.  IE, Each predictor vs the 1/0 response variable.
+
+2. Check for multicolinearity between all candidate predictors.  Remove one of the variables that are highly colinear.
+
+3. For all models whose P values fall below a certain threshold and that are not highly colinear, move those to a multivariate model.
+
+4. Remove one variable at a time whose P Value is largest and is above a predetermined alpha.  
+  a. After removing each variable, determine if any betas changed signs or if the magnitude of the beta changed greatly.  
+  b. If one of the above situation happens, check for multicolinearity between remaining variables.  Move to step 2. 
+  
+5. Once you have removed all multicolinear variables and all P values are below the predetermined alpha, place removed variables back into the model one at a time to determine if they happen to be significant at this point.
+
+6. This is your final model.  
+
+
+### Suggested Problems
+
+1. Conduct purposeful selection with the HOF data with 6 predictors of your choice.  
 
 ***
 
@@ -885,6 +942,56 @@ The right hand side of this equation should look familiar.  The right hand side 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
 |Supplemental reading below |  | Suggested Problems Below |
+
+### Supplemental Reading
+
+Lets use the model below to build a Receiver Operator Characteristic curve and analyse the Area Under the Curve 
+
+```{r message=FALSE, warning=FALSE}
+logisticmod = glm(HOF~RBI+lastyear+POS,data = hofdata, family = binomial(link="logit"))
+summary(logisticmod)
+names(hofdata)
+```
+
+Using this model, we can "predict" a probability that an individual makes it to the HOF.
+
+```{r message=FALSE, warning=FALSE}
+hofpred = predict.glm(logisticmod, newdata = hofdata, type = "response")
+head(hofpred)
+```
+
+This is the first six probabilities according to our model.  The first person (Hank Aaron), has a 98% chance of making the hall of fame.  The rest... not so much.  
+
+We need to determine a "cut point" such that everyone above the cut point is considered in the hall of fame and everyone below the cut point is below.  We have two tools to do this.
+
+First, we have the ROC curve.  This 'curve' is an overall measure for how good our model does at discriminating between our 1/0s.
+
+We also must download the `ROCR` library.
+
+```{r message=FALSE, warning=FALSE}
+library(ROCR)
+pred = prediction(hofpred,hofdata$HOF)
+roc.perf = performance(pred, measure = "tpr", x.measure = "fpr")
+plot(roc.perf)
+abline(a=0, b= 1)
+```
+
+The goal here is to have a very steep curve.  When the False Positive rate is relatively low, we have a large true positive rate.  
+
+To determine the quality of our discrimination, we'll look at the Area Under the Curve
+
+```{r message=FALSE, warning=FALSE}
+auc.perf = performance(pred, measure = "auc")
+auc.perf@y.values
+```
+
+This shows that the model does a good job distinguishing between who make and who does not make the hall of fame.  This metric can be misleading though, and we'll discuss that in class.
+
+### Suggested Problems
+
+1.  Create the ROC Curve for the final model you created at the end of the previous lesson.
+
+2.  Calculate the AUC for the same model. 
 
 ***
 
@@ -900,16 +1007,109 @@ The right hand side of this equation should look familiar.  The right hand side 
 
 ***
 
+### Suggested Reading
+
+We will further explore the best cut point by exploring sensitivity and specificity in a confusion matrix.
+
+Lets create an arbitrary cut point of .5.  In other words, if our model predicts a .5 or greater probability of being in the hall of fame, we'll classify them as being in the hall of fame.  If below .5, we'll consider them not in the HOF.  
+
+```{r message=FALSE, warning=FALSE}
+cut = ifelse(hofpred>.5,1,0)
+sum(cut)
+```
+
+You can see that we only predicted 50 players from history to be in the HOF, so we are under-predicting.  But lets take a deeper look by creating a confusion matrix.  
+
+You will need to install the caret library to do this.
+
+```{r message=FALSE, warning=FALSE}
+library(caret)
+confusionMatrix(cut, hofdata$HOF)
+```
+
+We can tell from the confusion matrix that we correctly classified at not in the HOF 8040 players and correctly classified in the hall of fame 27 players.  However, we incorrectly predicted 23 players as being in the hall of fame and also incorrectly predicted 135 players as not being in the hall of fame.  
+
+We were 98% accurate, which sounds nice but we also need to consider that if we just said no one was in the hall of fame that we'd get a pretty high percentage correct.  So the accuracy rate shouldn't be taken as the end all statistic.  
+
+Sensitivity is the true positive rate.
+
+Specificity is the true negative rate.
+
+We are pretty good at getting our true positives correct (sensitivity) by correctly identifying who should be in the HOF.
+
+We are pretty bad at the true negative rage (specificity) by poorly identifying who should be classified as not being in the HOF.
+
+Lets find a better cut point by iterating over many possible cut points and identifying which one maximizes accuracy and see how that does. 
+
+```{r message=FALSE, warning=FALSE}
+accuracy = NA
+for (i in 1:100) {
+  temp = ifelse(hofpred>i/100,1,0)
+  cm = confusionMatrix(temp, hofdata$HOF)
+  accuracy[i] = cm$overall['Accuracy']
+  # print(i)
+  # print(cm$overall['Accuracy'])
+}
+trackerdf = data.frame(index = 1:100, accuracy = accuracy)
+trackerdf$index[which.max(trackerdf$accuracy)]
+```
+
+This shows that the accuracy is maximized when the cut points is a .87.
+
+```{r message=FALSE, warning=FALSE}
+cut = ifelse(hofpred>.87,1,0)
+confusionMatrix(cut, hofdata$HOF)
+```
+
+As you can see, this is not ideal and we will improve off this in class.
+
+### Suggested Problems
+
+1. Using the model you built in previous lessons, find the ideal cut point using these methods.
+
+2. Discuss your models sensitivity and specificity.  Put these in terms of a real world take away.  
+
+***
 
 ## Lesson 26 - Model Comparison in Logistic Regression
 
 1. Understand what a model's 'deviance' and understand the 'likelihood ratio test.'
 
-1. Given two models, determine which model is the "better" model.
+2. Given two models, determine which model is the "better" model.
+
+3. Understand and implement the Hosmer Lemeshow Goodness of Fit Test.
 
 |Familiarize|Watch|Suggested Problems|
 |-------------------|-----------------|-----------|
 |Supplemental reading below |  | Suggested Problems Below |
+
+Look at the output below.  You should notice the null and residual deviance.  
+
+```{r message=FALSE, warning=FALSE}
+logisticmod = glm(HOF~HR+lastyear+POS,data = hofdata, family = binomial(link="logit"))
+summary(logisticmod)
+```
+
+Deviance is similar to the F statistic in linear regression in practice.  Sparing the details, it is a measure off how far off the probability estimates are from actually being a correct 1 or 0.  The further off (and the more data points that exist), the larger the deviance.
+
+As you can see in the model above, there is a null and residual deviance.  The null deviance is the deviance when only the intercept is considered.  The residual deviance is the deviance of when other predictors are added.  An ideal deviance is 0, but a "large" deviance should not be immediately taken to assume that your model is bad (as deviance grows based on the number of samples in your model).
+
+For this class, a simple comparison of deviance between two models will be sufficient to compare models.  
+
+We will also need a metric to determine if our model fits our data well.  The Hosmer Lemeshow Test will do this.
+
+The Hosmer Lemeshow Tests whether a model fits the data.  The null hypothesis is "The Model Fits Well".  The alternate hypothesis is "Does the model not fit well."
+
+The further the model is from accurately portraying the actual data, the worse the deviance is.  The higher the deviance, the more extreme we are along the test statistic distribution (Chi-Square).
+
+You will need the `ResourcesSelection` library to conduct this test.
+
+```{r message=FALSE, warning=FALSE}
+library(ResourceSelection)
+hoslem.test(hofdata$HOF,hofpred)
+```
+
+Because the P Value is high, we do not have enough evidence to reject the null hypothesis (that the model fits well) and we assume that the model fits the data well.  
 
 ***
 
