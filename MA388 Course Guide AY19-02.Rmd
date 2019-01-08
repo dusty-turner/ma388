@@ -20,8 +20,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Welcome to MA388.  In this course, we will explore model buidling using multiple linear regression, logistic regression, and other statistical learning techniques through the world of baseball.
 
-This is a change
-
 <center>![](ArmyStatistics.png)</center>
 
 ## Course Guide Tips
