@@ -20,10 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Welcome to MA388.  In this course, we will explore model buidling using multiple linear regression, logistic regression, and other statistical learning techniques through the world of baseball.
 
-<<<<<<< HEAD
 
-=======
->>>>>>> b90b975a87491657b41d7b1b53c8a3ccacd5211e
+
 <center>![](ArmyStatistics.png)</center>
 
 ## Course Guide Tips
@@ -230,7 +228,8 @@ Helpful commands
 
 Install / Load `rvest`
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
-# install.packages("rvest")  
+# install.packages("rvest") 
+library(tidyverse)
 library(rvest)
 ```
 
@@ -249,6 +248,9 @@ texas = as.data.frame(texas)
 texas = unique(texas)
 colnames(texas) = as.character(unlist(texas[1,]))
 texas = texas[-1,]
+texas %>% as.tibble() %>% write.csv("texas.csv", row.names = FALSE)
+
+texas = read_csv("texas.csv")
 ```
 
 You can now use this information to answer the suggested problems.  
