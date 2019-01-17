@@ -20,7 +20,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Welcome to MA388.  In this course, we will explore model buidling using multiple linear regression, logistic regression, and other statistical learning techniques through the world of baseball.
 
-This is a change
 
 <center>![](ArmyStatistics.png)</center>
 
@@ -322,9 +321,10 @@ Use `names(data)` to get a list of the names of your data.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 library(tidyverse)
-fielding = read_csv("Fielding.csv")
+fielding = read_csv("Fielding.csv") %>% mutate(lgID = as.character(lgID))
 batting = read_csv("Batting.csv")
 pitching = read_csv("Pitching.csv")
+
 
 fieldandbat = 
   fielding %>%
