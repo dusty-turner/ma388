@@ -250,7 +250,9 @@ colnames(texas) = as.character(unlist(texas[1,]))
 texas = texas[-1,]
 texas %>% as.tibble() %>% write.csv("texas.csv", row.names = FALSE)
 
+texas = read_csv("texas.csv") %>% filter(!is.na(Rk)) %>% write.csv("texas.csv", row.names = FALSE)
 texas = read_csv("texas.csv")
+texas
 ```
 
 You can now use this information to answer the suggested problems.  
